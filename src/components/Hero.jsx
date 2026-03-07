@@ -6,7 +6,7 @@ export default function Hero() {
 
     useEffect(() => {
         let ctx = gsap.context(() => {
-            gsap.from(".hero-element", {
+            gsap.from(".anim-fade-up-hero", {
                 y: 40,
                 opacity: 0,
                 duration: 1.2,
@@ -19,7 +19,7 @@ export default function Hero() {
     }, []);
 
     return (
-        <section ref={containerRef} className="relative w-full h-[100dvh] flex items-end pb-32 px-6 md:px-16 overflow-hidden bg-primary" id="hero">
+        <section ref={containerRef} className="relative w-full h-[100dvh] flex items-end pb-32 layout-page-padding overflow-hidden bg-primary" id="hero">
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <img
@@ -31,24 +31,24 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-transparent md:w-3/4"></div>
             </div>
 
-            <div className="relative z-10 w-full max-w-7xl mx-auto">
+            <div className="relative z-10 layout-content-width">
                 <div className="max-w-3xl flex flex-col items-start gap-4">
                     <div className="flex flex-col">
-                        <h1 className="hero-element font-sans font-extrabold text-5xl md:text-7xl lg:text-[6rem] tracking-tight text-background leading-[1.1]">
+                        <h1 className="anim-fade-up-hero text-hero-headline !text-5xl md:!text-7xl lg:!text-[6rem]">
                             Growth beyond
                         </h1>
-                        <h2 className="hero-element font-drama italic text-7xl md:text-9xl lg:text-[10rem] text-transparent bg-clip-text bg-gradient-to-r from-background to-background/50 leading-[0.8] -ml-2">
+                        <h2 className="anim-fade-up-hero text-hero-drama !text-7xl md:!text-9xl lg:!text-[10rem]">
                             limits.
                         </h2>
                     </div>
 
-                    <p className="hero-element font-sans text-background/80 text-lg md:text-xl max-w-xl mt-6 font-light leading-relaxed">
+                    <p className="anim-fade-up-hero text-hero-description !text-lg md:!text-xl !max-w-xl">
                         Botonomy.ai builds revenue-generating automation systems that turn fragmented marketing efforts into scalable growth infrastructure.
                     </p>
 
-                    <button className="hero-element mt-10 relative overflow-hidden px-12 py-5 rounded-[2.5rem] font-sans text-lg font-bold text-background transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:scale-[1.03] group shadow-2xl shadow-accent-start/25">
-                        <span className="absolute inset-0 bg-gradient-to-r from-[#FF4D4D] to-[#FF8A00] transition-transform duration-500 group-hover:scale-110"></span>
-                        <span className="relative z-10 flex items-center gap-2">
+                    <button className="anim-fade-up-hero interactive-button-accent mt-10 !px-12 !py-5">
+                        <span className="interactive-button-static-gradient"></span>
+                        <span className="relative z-10 flex items-center gap-2 text-lg">
                             Book a call
                         </span>
                     </button>

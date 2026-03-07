@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Footer() {
     return (
-        <footer className="bg-[#050505] pt-24 pb-12 px-6 md:px-16 rounded-t-[4rem] relative z-20">
+        <footer className="bg-[#050505] pt-24 pb-12 px-6 md:px-16 rounded-t-[4rem] relative z-20 -mt-16">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
 
                 <div className="flex flex-col gap-6 max-w-sm">
@@ -23,27 +23,27 @@ export default function Footer() {
 
                 <div className="flex gap-16 md:gap-24">
                     <div className="flex flex-col gap-4">
-                        <h4 className="font-sans font-bold text-white mb-2 text-sm">Protocol</h4>
-                        <a href="#features" className="font-sans text-sm text-white/50 hover:text-white transition-colors">Systems</a>
-                        <a href="#manifesto" className="font-sans text-sm text-white/50 hover:text-white transition-colors">Manifesto</a>
-                        <a href="#architecture" className="font-sans text-sm text-white/50 hover:text-white transition-colors">Architecture</a>
+                        <h4 className="font-sans font-bold text-white mb-2 text-sm uppercase tracking-widest opacity-50">Protocol</h4>
+                        <a href="#features" className="text-body-standard !text-sm !text-white/50 hover:!text-white transition-colors">Systems</a>
+                        <a href="#manifesto" className="text-body-standard !text-sm !text-white/50 hover:!text-white transition-colors">Manifesto</a>
+                        <a href="#architecture" className="text-body-standard !text-sm !text-white/50 hover:!text-white transition-colors">Architecture</a>
                     </div>
                     <div className="flex flex-col gap-4">
-                        <h4 className="font-sans font-bold text-white mb-2 text-sm">Connect</h4>
-                        <a href="#" className="font-sans text-sm text-white/50 hover:text-white transition-colors">Deploy</a>
-                        <a href="#" className="font-sans text-sm text-white/50 hover:text-white transition-colors">Audit</a>
-                        <a href="#" className="font-sans text-sm text-white/50 hover:text-white transition-colors">Twitter</a>
+                        <h4 className="font-sans font-bold text-white mb-2 text-sm uppercase tracking-widest opacity-50">Connect</h4>
+                        <a href="https://calendar.app.google/TtZARGvo78TCAzHJ6" className="text-body-standard !text-sm !text-white/50 hover:!text-white transition-colors">Book a call</a>
+                        <a href="#" className="text-body-standard !text-sm !text-white/50 hover:!text-white transition-colors">Audit</a>
+                        <a href="#" className="text-body-standard !text-sm !text-white/50 hover:!text-white transition-colors">Twitter</a>
                     </div>
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto mt-24 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-                <p className="font-sans text-xs text-white/30">
+            <div className="layout-content-width mt-24 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p className="font-mono text-[10px] text-white/30 uppercase tracking-widest">
                     © {new Date().getFullYear()} Botonomy AI. All rights reserved.
                 </p>
                 <div className="flex gap-6">
-                    <a href="#" className="font-sans text-xs text-white/30 hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" className="font-sans text-xs text-white/30 hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" className="font-mono text-[10px] text-white/30 hover:text-white transition-colors uppercase tracking-widest">Privacy Policy</a>
+                    <a href="#" className="font-mono text-[10px] text-white/30 hover:text-white transition-colors uppercase tracking-widest">Terms of Service</a>
                 </div>
             </div>
         </footer>

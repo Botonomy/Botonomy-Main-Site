@@ -49,7 +49,7 @@ export default function Manifesto() {
     }, []);
 
     return (
-        <section ref={containerRef} className="relative w-full min-h-[80vh] flex items-center justify-center py-32 px-6 md:px-16 overflow-hidden bg-primary" id="manifesto">
+        <section ref={containerRef} className="section-manifesto" id="manifesto">
             {/* Background Parallax Texture */}
             <div className="absolute inset-0 z-0 overflow-hidden">
                 <div ref={bgRef} className="absolute inset-[-20%] w-[140%] h-[140%]">
@@ -62,22 +62,22 @@ export default function Manifesto() {
                 <div className="absolute inset-0 bg-gradient-to-b from-primary via-primary/80 to-primary"></div>
             </div>
 
-            <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col gap-16 md:gap-24">
+            <div className="relative z-10 layout-content-width layout-page-padding flex flex-col gap-16 md:gap-24">
 
                 <div ref={text1Ref} className="max-w-2xl">
-                    <p className="font-sans font-medium text-2xl md:text-3xl text-background/60 leading-tight">
+                    <p className="text-manifesto-label">
                         Most businesses run on:
                     </p>
-                    <h2 className="font-sans font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight text-background mt-2">
+                    <h2 className="text-manifesto-statement">
                         fragmented manual bottlenecks.
                     </h2>
                 </div>
 
                 <div ref={text2Ref} className="max-w-4xl self-end text-right">
-                    <p className="font-sans font-medium text-2xl md:text-3xl text-background/60 leading-tight">
+                    <p className="text-manifesto-label">
                         We scale with:
                     </p>
-                    <h2 className="font-drama italic mt-2 text-6xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-r from-accent-start to-accent-end leading-[0.9]">
+                    <h2 className="text-manifesto-drama">
                         autonomous agentic growth.
                     </h2>
                 </div>

@@ -18,7 +18,7 @@ const NeuralNetSim = () => {
     }, []);
 
     return (
-        <div ref={container} className="relative w-full h-full min-h-[300px] flex items-center justify-center bg-dark/20 rounded-3xl overflow-hidden border border-white/5">
+        <div ref={container} className="ui-arch-sim-container">
             <svg className="w-full h-full absolute inset-0 max-w-sm mx-auto opacity-60" viewBox="0 0 200 200">
                 <g className="ring-1">
                     <circle cx="100" cy="100" r="60" fill="none" stroke="rgba(255, 77, 77, 0.2)" strokeWidth="1" strokeDasharray="4 8" />
@@ -72,7 +72,7 @@ const DataParserSim = () => {
     }, []);
 
     return (
-        <div ref={container} className="relative w-full h-full min-h-[300px] flex items-center justify-center bg-dark/20 rounded-3xl overflow-hidden border border-white/5 p-8">
+        <div ref={container} className="ui-arch-sim-container !p-8">
             <div className="w-full h-full relative grid grid-cols-4 gap-2 opacity-50">
                 {[...Array(20)].map((_, i) => (
                     <div key={i} className="data-block bg-white/10 rounded h-8 opacity-20"></div>
@@ -109,7 +109,7 @@ const SystemMonitorSim = () => {
     }, []);
 
     return (
-        <div ref={container} className="relative w-full h-full min-h-[300px] flex flex-col justify-center gap-8 bg-dark/20 rounded-3xl overflow-hidden border border-white/5 p-8">
+        <div ref={container} className="ui-arch-sim-container !flex-col !justify-center !gap-8 !p-8">
             <svg className="w-full h-24" viewBox="0 0 400 100" preserveAspectRatio="none">
                 <path
                     className="ekg-path"
@@ -184,13 +184,13 @@ export default function Architecture() {
     ];
 
     return (
-        <section ref={containerRef} className="py-24 px-6 md:px-16 bg-primary" id="architecture">
-            <div className="max-w-7xl mx-auto">
+        <section ref={containerRef} className="section-architecture" id="architecture">
+            <div className="layout-content-width">
                 <div className="mb-20">
-                    <h2 className="font-sans font-bold text-4xl tracking-tight text-background mb-4">
+                    <h2 className="text-features-title !text-background">
                         Deployment <span className="font-drama italic text-accent-start">Protocol.</span>
                     </h2>
-                    <p className="font-sans text-lg text-background/60 max-w-xl">
+                    <p className="text-body-standard !text-background/60 !max-w-xl">
                         Our step-by-step methodology building end-to-end automation ecosystems.
                     </p>
                 </div>
@@ -199,16 +199,16 @@ export default function Architecture() {
                     {steps.map((step, idx) => (
                         <div
                             key={idx}
-                            className="arch-card sticky top-24 w-full bg-black/40 backdrop-blur-xl border border-white/10 rounded-[3rem] p-8 md:p-16 mb-24 shadow-2xl flex flex-col md:flex-row gap-12 items-center origin-top transform-gpu"
+                            className="arch-card ui-arch-card"
                             style={{ zIndex: steps.length - idx }}
                         >
 
                             <div className="flex-1 flex flex-col gap-6">
-                                <span className="font-mono text-6xl font-bold text-white/10">{step.num}</span>
-                                <h3 className="font-sans font-bold text-3xl md:text-5xl text-background tracking-tight">
+                                <span className="text-arch-card-num">{step.num}</span>
+                                <h3 className="text-arch-card-title">
                                     {step.title}
                                 </h3>
-                                <p className="font-sans text-xl text-background/60 leading-relaxed max-w-lg">
+                                <p className="text-arch-card-body">
                                     {step.desc}
                                 </p>
                             </div>

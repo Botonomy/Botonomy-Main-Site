@@ -32,13 +32,13 @@ export default function Pricing() {
     );
 
     return (
-        <section ref={containerRef} className="py-32 px-6 md:px-16 bg-background rounded-t-[3rem] -mt-10 relative z-10" id="pricing">
-            <div className="max-w-7xl mx-auto">
+        <section ref={containerRef} className="section-hook !py-32" id="pricing">
+            <div className="layout-content-width layout-page-padding">
                 <div className="mb-20 text-center max-w-2xl mx-auto">
-                    <h2 className="font-sans font-bold text-4xl md:text-5xl tracking-tight text-primary mb-6">
+                    <h2 className="text-features-title">
                         Architectural <span className="font-drama italic text-accent-start">Plans.</span>
                     </h2>
-                    <p className="font-sans text-lg text-primary/70">
+                    <p className="text-body-standard">
                         Select the growth infrastructure that scales with your operational demands.
                     </p>
                 </div>
@@ -46,10 +46,10 @@ export default function Pricing() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
 
                     {/* Tier 1 */}
-                    <div className="pricing-card bg-white p-10 rounded-[3rem] shadow-xl shadow-primary/5 border border-primary/5 relative">
-                        <h3 className="font-sans font-bold text-2xl text-primary mb-2">Growth Automations</h3>
+                    <div className="pricing-card ui-pricing-card">
+                        <h3 className="text-pricing-title">Growth Automations</h3>
                         <p className="font-sans text-sm text-primary/60 mb-8">For agencies scaling their first orchestrated workflows.</p>
-                        <div className="font-mono text-4xl font-bold text-primary mb-8">$2,500<span className="text-sm text-primary/40 font-sans">/mo</span></div>
+                        <div className="text-pricing-price">$2,500<span className="text-sm text-primary/40 font-sans">/mo</span></div>
 
                         <ul className="flex flex-col gap-4 mb-10">
                             <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start" size={20} /> Workflow auditing</li>
@@ -60,13 +60,13 @@ export default function Pricing() {
                     </div>
 
                     {/* Tier 2 (Highlighted) */}
-                    <div className="pricing-card bg-primary p-12 rounded-[3.5rem] shadow-2xl shadow-accent-start/20 border border-white/5 relative z-10 lg:-mx-4">
+                    <div className="pricing-card ui-pricing-card-featured">
                         <div className="absolute top-0 right-10 -translate-y-1/2 bg-gradient-to-r from-accent-start to-accent-end text-background text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
                             Most Deployed
                         </div>
-                        <h3 className="font-sans font-bold text-3xl text-background mb-2">Intelligent Systems</h3>
+                        <h3 className="text-pricing-title-featured">Intelligent Systems</h3>
                         <p className="font-sans text-sm text-background/60 mb-8">End-to-end ecosystems for predictable revenue generation.</p>
-                        <div className="font-mono text-5xl font-bold text-background mb-8">$6,800<span className="text-sm text-background/40 font-sans">/mo</span></div>
+                        <div className="text-pricing-price-featured">$6,800<span className="text-sm text-background/40 font-sans">/mo</span></div>
 
                         <ul className="flex flex-col gap-4 mb-10">
                             <li className="flex gap-3 text-sm text-background/90"><Check className="text-accent-start" size={20} /> Programmatic SEO infra</li>
@@ -78,10 +78,10 @@ export default function Pricing() {
                     </div>
 
                     {/* Tier 3 */}
-                    <div className="pricing-card bg-white p-10 rounded-[3rem] shadow-xl shadow-primary/5 border border-primary/5 relative">
-                        <h3 className="font-sans font-bold text-2xl text-primary mb-2">AI Enterprise</h3>
+                    <div className="pricing-card ui-pricing-card">
+                        <h3 className="text-pricing-title">AI Enterprise</h3>
                         <p className="font-sans text-sm text-primary/60 mb-8">Custom models and deep operational integration.</p>
-                        <div className="font-mono text-4xl font-bold text-primary mb-8">Custom</div>
+                        <div className="text-pricing-price">Custom</div>
 
                         <ul className="flex flex-col gap-4 mb-10">
                             <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start" size={20} /> Dedicated orchestrator</li>
