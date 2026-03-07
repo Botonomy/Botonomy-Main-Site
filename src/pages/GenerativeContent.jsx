@@ -4,10 +4,10 @@ import { AgentOrchestrator, InferenceStream, WorkflowScheduler } from '../compon
 import BrandParallax from '../components/BrandParallax';
 
 const genLogos = [
-    { name: "WordPress", url: "https://cdn.simpleicons.org/wordpress/white" },
-    { name: "Shopify", url: "https://cdn.simpleicons.org/shopify/white" },
-    { name: "Wix", url: "https://cdn.simpleicons.org/wix/white" },
-    { name: "Webflow", url: "https://cdn.simpleicons.org/webflow/white" },
+    { name: "WordPress", url: "/assets/logos/wordpress.svg" },
+    { name: "Shopify", url: "/assets/logos/shopify.svg" },
+    { name: "Wix", url: "/assets/logos/wix.svg" },
+    { name: "Webflow", url: "/assets/logos/webflow.svg" },
 ];
 
 export default function GenerativeContent() {
@@ -57,7 +57,7 @@ export default function GenerativeContent() {
                             {/* WordPress Circle */}
                             <div className="anim-fade-up ui-hero-asset-circle -top-10 right-0 w-[22rem] h-[22rem] rotate-[15deg]">
                                 <img
-                                    src="https://cdn.simpleicons.org/wordpress/white"
+                                    src="/assets/logos/wordpress.svg"
                                     className="w-44 h-44 ui-hero-asset-img"
                                     alt="WordPress"
                                 />
@@ -66,7 +66,7 @@ export default function GenerativeContent() {
                             {/* Google Docs Circle (MIDDLE) */}
                             <div className="anim-fade-up ui-hero-asset-circle top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-[18rem] h-[18rem] rotate-[-8deg]">
                                 <img
-                                    src="https://cdn.simpleicons.org/googledocs/white"
+                                    src="/assets/logos/googledocs.svg"
                                     className="w-36 h-36 ui-hero-asset-img"
                                     alt="Google Docs"
                                 />
@@ -75,7 +75,7 @@ export default function GenerativeContent() {
                             {/* Shopify Circle */}
                             <div className="anim-fade-up ui-hero-asset-circle bottom-0 left-0 w-[20rem] h-[20rem] -rotate-[12deg]">
                                 <img
-                                    src="https://cdn.simpleicons.org/shopify/white"
+                                    src="/assets/logos/shopify.svg"
                                     className="w-40 h-40 ui-hero-asset-img"
                                     alt="Shopify"
                                 />
@@ -84,7 +84,7 @@ export default function GenerativeContent() {
                             {/* Airtable Circle (NEW) */}
                             <div className="anim-fade-up ui-hero-asset-circle top-0 left-20 w-[16rem] h-[16rem] rotate-[-15deg]">
                                 <img
-                                    src="https://cdn.simpleicons.org/airtable/white"
+                                    src="/assets/logos/airtable.svg"
                                     className="w-32 h-32 ui-hero-asset-img"
                                     alt="Airtable"
                                 />

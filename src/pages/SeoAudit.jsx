@@ -4,10 +4,10 @@ import { AgentOrchestrator, InferenceStream, WorkflowScheduler } from '../compon
 import BrandParallax from '../components/BrandParallax';
 
 const seoLogos = [
-    { name: "Screaming Frog", url: "https://cdn.simpleicons.org/screamingfrog/white" },
-    { name: "Semrush", url: "https://cdn.simpleicons.org/semrush/white" },
-    { name: "Ahrefs", url: "https://cdn.simpleicons.org/ahrefs/white" },
-    { name: "Search Console", url: "https://cdn.simpleicons.org/googlesearchconsole/white" }
+    { name: "Mozilla", url: "/assets/logos/moz.svg" },
+    { name: "Semrush", url: "/assets/logos/semrush.svg" },
+    { name: "Analytics", url: "/assets/logos/analytics.svg" },
+    { name: "Search Console", url: "/assets/logos/search-console.svg" }
 ];
 
 export default function SeoAudit() {

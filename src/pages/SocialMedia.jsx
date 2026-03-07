@@ -4,11 +4,11 @@ import { AgentOrchestrator, InferenceStream, WorkflowScheduler } from '../compon
 import BrandParallax from '../components/BrandParallax';
 
 const socialLogos = [
-    { name: "Instagram", url: "https://cdn.simpleicons.org/instagram/white" },
-    { name: "Facebook", url: "https://cdn.simpleicons.org/facebook/white" },
-    { name: "X", url: "https://cdn.simpleicons.org/x/white" },
-    { name: "TikTok", url: "https://cdn.simpleicons.org/tiktok/white" },
-    { name: "YouTube", url: "https://cdn.simpleicons.org/youtube/white" }
+    { name: "Instagram", url: "/assets/logos/instagram.svg" },
+    { name: "Facebook", url: "/assets/logos/facebook.svg" },
+    { name: "X", url: "/assets/logos/x.svg" },
+    { name: "TikTok", url: "/assets/logos/tiktok.svg" },
+    { name: "YouTube", url: "/assets/logos/youtube.svg" }
 ];
 
 export default function SocialMedia() {

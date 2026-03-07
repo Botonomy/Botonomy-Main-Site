@@ -4,13 +4,13 @@ import { AgentOrchestrator, InferenceStream, WorkflowScheduler } from '../compon
 import BrandParallax from '../components/BrandParallax';
 
 const ragLogos = [
-    { name: "Pinecone", url: "https://cdn.simpleicons.org/pinecone/white" },
-    { name: "PostgreSQL", url: "https://cdn.simpleicons.org/postgresql/white" },
-    { name: "Qdrant", url: "https://cdn.simpleicons.org/qdrant/white" },
-    { name: "Redis", url: "https://cdn.simpleicons.org/redis/white" },
-    { name: "OpenAI", url: "https://cdn.simpleicons.org/openai/white" },
-    { name: "Anthropic", url: "https://cdn.simpleicons.org/anthropic/white" },
-    { name: "LangChain", url: "https://cdn.simpleicons.org/langchain/white" }
+    { name: "Elasticsearch", url: "/assets/logos/elasticsearch.svg" },
+    { name: "PostgreSQL", url: "/assets/logos/postgresql.svg" },
+    { name: "MongoDB", url: "/assets/logos/mongodb.svg" },
+    { name: "Redis", url: "/assets/logos/redis.svg" },
+    { name: "OpenAI", url: "/assets/logos/openai.svg" },
+    { name: "Anthropic", url: "/assets/logos/anthropic.svg" },
+    { name: "LangChain", url: "/assets/logos/langchain.svg" }
 ];
 
 export default function RagSystems() {

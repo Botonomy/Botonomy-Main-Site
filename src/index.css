@@ -185,19 +185,23 @@
   }
 
   .ui-brand-logo-grid {
-    @apply flex flex-wrap items-center justify-center gap-12 md:gap-20 opacity-90;
+    @apply flex flex-wrap items-center justify-center gap-x-12 gap-y-12 md:gap-x-20 md:gap-y-16 opacity-90;
   }
 
   .ui-brand-logo-item {
-    @apply flex flex-col items-center gap-3 transition-all duration-500 opacity-80 hover:opacity-100 hover:scale-110;
+    @apply flex flex-col items-center justify-center gap-4 transition-all duration-500 opacity-70 hover:opacity-100 hover:scale-[1.05];
+    min-width: 120px;
   }
 
   .ui-brand-logo-img {
-    @apply h-[3.75rem] md:h-[5.25rem] object-contain brightness-0 invert opacity-60 hover:opacity-100 transition-opacity;
+    @apply h-10 md:h-14 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-all duration-300;
+    filter: brightness(0) invert(1);
+    display: block;
+    margin: 0 auto;
   }
 
   .ui-brand-logo-label {
-    @apply font-mono text-[10px] md:text-xs text-background/40 tracking-widest uppercase;
+    @apply font-mono text-[9px] md:text-[11px] text-background/30 tracking-[0.2em] uppercase text-center;
   }
 
   /* Navbar */
@@ -206,11 +210,11 @@
   }
 
   .ui-navbar-transparent {
-    @apply bg-[#4E1380]/30 backdrop-blur-md border border-white/10 text-white shadow-lg;
+    @apply bg-[#4E1380]/45 backdrop-blur-md border border-white/10 text-white shadow-lg;
   }
 
   .ui-navbar-scrolled {
-    @apply bg-[#4E1380]/30 backdrop-blur-2xl border border-white/10 text-white shadow-2xl;
+    @apply bg-[#4E1380]/45 backdrop-blur-2xl border border-white/10 text-white shadow-2xl;
   }
 
   .ui-navbar-contrast {

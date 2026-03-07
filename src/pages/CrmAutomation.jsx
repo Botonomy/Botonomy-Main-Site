@@ -4,10 +4,10 @@ import { AgentOrchestrator, InferenceStream, WorkflowScheduler } from '../compon
 import BrandParallax from '../components/BrandParallax';
 
 const crmLogos = [
-    { name: "HubSpot", url: "https://cdn.simpleicons.org/hubspot/white" },
-    { name: "ClickUp", url: "https://cdn.simpleicons.org/clickup/white" },
-    { name: "Monday.com", url: "https://cdn.simpleicons.org/mondaydotcom/white" },
-    { name: "Salesforce", url: "https://cdn.simpleicons.org/salesforce/white" }
+    { name: "HubSpot", url: "/assets/logos/hubspot.svg" },
+    { name: "ClickUp", url: "/assets/logos/clickup.svg" },
+    { name: "Monday.com", url: "/assets/logos/mondaydotcom.svg" },
+    { name: "Salesforce", url: "/assets/logos/salesforce.svg" }
 ];
 
 export default function CrmAutomation() {
