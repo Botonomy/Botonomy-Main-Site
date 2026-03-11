@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { trackCTA, trackBookingIntent, useSectionTracking } from '../utils/analytics';
 
 export default function Hero() {
     const containerRef = useRef(null);
@@ -15,8 +16,16 @@ export default function Hero() {
                 delay: 0.2
             });
         }, containerRef);
-        return () => ctx.revert();
+
+        const cleanup = useSectionTracking(containerRef, 'hero');
+        return () => { ctx.revert(); cleanup?.(); };
     }, []);
+
+    const handleBookCall = () => {
+        trackCTA('hero', 'book_call');
+        trackBookingIntent('hero');
+        window.open('https://calendar.app.google/TtZARGvo78TCAzHJ6', '_blank');
+    };
 
     return (
         <section ref={containerRef} className="relative w-full h-[100dvh] flex items-end pb-32 layout-page-padding overflow-hidden bg-primary" id="hero">
@@ -46,7 +55,10 @@ export default function Hero() {
                         Botonomy.ai builds revenue-generating automation systems that turn fragmented marketing efforts into scalable growth infrastructure.
                     </p>
 
-                    <button className="anim-fade-up-hero interactive-button-accent mt-10 !px-12 !py-5">
+                    <button
+                        onClick={handleBookCall}
+                        className="anim-fade-up-hero interactive-button-accent mt-10 !px-12 !py-5"
+                    >
                         <span className="interactive-button-static-gradient"></span>
                         <span className="relative z-10 flex items-center gap-2 text-lg">
                             Book a call

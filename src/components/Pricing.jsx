@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { Check } from 'lucide-react';
+import { trackPricingCTA, trackPricingView, useSectionTracking } from '../utils/analytics';
 
 export default function Pricing() {
     const containerRef = useRef(null);
@@ -19,16 +20,18 @@ export default function Pricing() {
                 ease: "power3.out"
             });
         }, containerRef);
-        return () => ctx.revert();
+
+        const cleanup = useSectionTracking(containerRef, 'pricing');
+        return () => { ctx.revert(); cleanup?.(); };
     }, []);
 
-    const ButtonBase = ({ children, primary }) => (
-        <button className={`w-full relative overflow-hidden px-8 py-4 rounded-[2rem] font-sans text-sm font-bold transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:scale-[1.03] group ${primary ? 'text-background' : 'text-primary bg-primary/5 hover:bg-primary/10'}`}>
+    const ButtonBase = ({ children, primary, href, plan }) => (
+        <a href={href || '#contact'} onClick={() => plan && trackPricingCTA(plan)} className={`w-full relative overflow-hidden px-8 py-4 rounded-[2rem] font-sans text-sm font-bold transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:scale-[1.03] group flex items-center justify-center ${primary ? 'text-background' : 'text-primary bg-primary/5 hover:bg-primary/10'}`}>
             {primary && <span className="absolute inset-0 bg-gradient-to-r from-[#FF4D4D] to-[#FF8A00] transition-transform duration-500 group-hover:scale-110"></span>}
             <span className="relative z-10 flex items-center justify-center gap-2">
                 {children}
             </span>
-        </button>
+        </a>
     );
 
     return (
@@ -36,7 +39,7 @@ export default function Pricing() {
             <div className="layout-content-width layout-page-padding">
                 <div className="mb-20 text-center max-w-2xl mx-auto">
                     <h2 className="text-features-title">
-                        Architectural <span className="font-drama italic text-accent-start">Plans.</span>
+                        Architectural <span id="plans" className="font-drama italic text-accent-start">Plans.</span>
                     </h2>
                     <p className="text-body-standard">
                         Select the growth infrastructure that scales with your operational demands.
@@ -45,53 +48,77 @@ export default function Pricing() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
 
-                    {/* Tier 1 */}
+                    {/* Tier 1 — Operate */}
                     <div className="pricing-card ui-pricing-card">
-                        <h3 className="text-pricing-title">Growth Automations</h3>
-                        <p className="font-sans text-sm text-primary/60 mb-8">For agencies scaling their first orchestrated workflows.</p>
-                        <div className="text-pricing-price">$2,500<span className="text-sm text-primary/40 font-sans">/mo</span></div>
+                        <h3 className="text-pricing-title">Operate</h3>
+                        <p className="font-sans text-sm text-primary/60 mb-8">For growth-stage brands building a serious SEO and automation foundation.</p>
+                        <div className="text-pricing-price">$1,895<span className="text-sm text-primary/40 font-sans">/mo</span></div>
 
                         <ul className="flex flex-col gap-4 mb-10">
-                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start" size={20} /> Workflow auditing</li>
-                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start" size={20} /> 5 Custom AI triggers</li>
-                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start" size={20} /> Basic data enrichment</li>
+                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start shrink-0" size={20} /> SEO site audit</li>
+                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start shrink-0" size={20} /> Technical SEO fixes</li>
+                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start shrink-0" size={20} /> On-page metadata improvements</li>
+                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start shrink-0" size={20} /> Content analysis</li>
+                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start shrink-0" size={20} /> Content strategy</li>
+                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start shrink-0" size={20} /> Automation systems architecture</li>
                         </ul>
-                        <ButtonBase>Deploy Basic</ButtonBase>
+                        <ButtonBase plan="operate">Get Started</ButtonBase>
                     </div>
 
-                    {/* Tier 2 (Highlighted) */}
+                    {/* Tier 2 — Accelerate (Featured) */}
                     <div className="pricing-card ui-pricing-card-featured">
                         <div className="absolute top-0 right-10 -translate-y-1/2 bg-gradient-to-r from-accent-start to-accent-end text-background text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
-                            Most Deployed
+                            Most Popular
                         </div>
-                        <h3 className="text-pricing-title-featured">Intelligent Systems</h3>
-                        <p className="font-sans text-sm text-background/60 mb-8">End-to-end ecosystems for predictable revenue generation.</p>
-                        <div className="text-pricing-price-featured">$6,800<span className="text-sm text-background/40 font-sans">/mo</span></div>
+                        <h3 className="text-pricing-title-featured">Accelerate</h3>
+                        <p className="font-sans text-sm text-background/60 mb-8">Full-stack SEO, content, and paid ads — running autonomously every month.</p>
+                        <div className="text-pricing-price-featured">$4,500<span className="text-sm text-background/40 font-sans">/mo</span></div>
 
                         <ul className="flex flex-col gap-4 mb-10">
-                            <li className="flex gap-3 text-sm text-background/90"><Check className="text-accent-start" size={20} /> Programmatic SEO infra</li>
-                            <li className="flex gap-3 text-sm text-background/90"><Check className="text-accent-start" size={20} /> Unlimited automated agents</li>
-                            <li className="flex gap-3 text-sm text-background/90"><Check className="text-accent-start" size={20} /> Client acquisition pipelines</li>
-                            <li className="flex gap-3 text-sm text-background/90"><Check className="text-accent-start" size={20} /> Priority system monitoring</li>
+                            <li className="flex gap-3 text-sm text-background/90"><Check className="text-accent-start shrink-0" size={20} /> Everything in Operate</li>
+                            <li className="flex gap-3 text-sm text-background/90"><Check className="text-accent-start shrink-0" size={20} /> Monthly crawl monitoring</li>
+                            <li className="flex gap-3 text-sm text-background/90"><Check className="text-accent-start shrink-0" size={20} /> 25 AI-generated articles/month</li>
+                            <li className="flex gap-3 text-sm text-background/90"><Check className="text-accent-start shrink-0" size={20} /> Social media content optimisation</li>
+                            <li className="flex gap-3 text-sm text-background/90"><Check className="text-accent-start shrink-0" size={20} /> Internal link optimisation</li>
+                            <li className="flex gap-3 text-sm text-background/90"><Check className="text-accent-start shrink-0" size={20} /> Competitor keyword gap analysis</li>
+                            <li className="flex gap-3 text-sm text-background/90"><Check className="text-accent-start shrink-0" size={20} /> Content erosion report</li>
+                            <li className="flex gap-3 text-sm text-background/90"><Check className="text-accent-start shrink-0" size={20} /> Google &amp; Meta ads management</li>
+                            <li className="flex gap-3 text-sm text-background/90"><Check className="text-accent-start shrink-0" size={20} /> Backlink audit</li>
                         </ul>
-                        <ButtonBase primary>Initialize Core</ButtonBase>
+                        <ButtonBase primary plan="accelerate">Get Started</ButtonBase>
                     </div>
 
-                    {/* Tier 3 */}
+                    {/* Tier 3 — Automate */}
                     <div className="pricing-card ui-pricing-card">
-                        <h3 className="text-pricing-title">AI Enterprise</h3>
-                        <p className="font-sans text-sm text-primary/60 mb-8">Custom models and deep operational integration.</p>
-                        <div className="text-pricing-price">Custom</div>
+                        <h3 className="text-pricing-title">Automate</h3>
+                        <p className="font-sans text-sm text-primary/60 mb-8">The complete autonomous marketing department — zero headcount required.</p>
+                        <div className="text-pricing-price">Contact Us</div>
 
                         <ul className="flex flex-col gap-4 mb-10">
-                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start" size={20} /> Dedicated orchestrator</li>
-                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start" size={20} /> Private LLM inference</li>
-                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start" size={20} /> Custom data scraping</li>
+                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start shrink-0" size={20} /> Everything in Accelerate</li>
+                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start shrink-0" size={20} /> Full outbound sales systems</li>
+                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start shrink-0" size={20} /> AI creative production</li>
+                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start shrink-0" size={20} /> CRO &amp; A/B testing</li>
+                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start shrink-0" size={20} /> AI automation &amp; integrations</li>
+                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start shrink-0" size={20} /> Weekly reporting &amp; strategy call</li>
+                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start shrink-0" size={20} /> Dedicated pipeline customisation</li>
+                            <li className="flex gap-3 text-sm text-primary/80"><Check className="text-accent-start shrink-0" size={20} /> SLA: P1 issues resolved in 24–48 hrs</li>
                         </ul>
-                        <ButtonBase>Book an Audit</ButtonBase>
+                        <ButtonBase plan="automate">Get Started</ButtonBase>
                     </div>
 
                 </div>
+
+                {/* Bespoke CTA */}
+                <div className="mt-12 text-center">
+                    <p className="font-sans text-sm text-primary/50">
+                        Need something beyond the standard stack?{' '}
+                        <a href="#contact" className="text-primary/80 underline underline-offset-4 hover:text-accent-start transition-colors duration-200">
+                            Contact us for bespoke solutions.
+                        </a>
+                    </p>
+                </div>
+
             </div>
         </section>
     );

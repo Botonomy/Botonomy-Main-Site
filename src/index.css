@@ -118,7 +118,7 @@
   }
 
   .text-manifesto-drama {
-    @apply font-drama italic mt-2 text-6xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-r from-accent-start to-accent-end leading-[0.9];
+    @apply font-drama italic mt-2 text-6xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-r from-accent-start to-accent-end leading-[1.05] pb-2;
   }
 
   /* UI & Components */
@@ -194,10 +194,31 @@
   }
 
   .ui-brand-logo-img {
-    @apply h-10 md:h-14 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-all duration-300;
-    filter: brightness(0) invert(1);
+    @apply flex items-center justify-center transition-all duration-300;
+    color: white;
+  }
+
+  .ui-brand-logo-img svg {
+    height: 2.5rem;
+    width: auto;
+    max-width: 140px;
     display: block;
-    margin: 0 auto;
+  }
+
+  .ui-brand-logo-img svg *,
+  .ui-brand-logo-img svg path,
+  .ui-brand-logo-img svg circle,
+  .ui-brand-logo-img svg rect,
+  .ui-brand-logo-img svg polygon,
+  .ui-brand-logo-img svg ellipse {
+    fill: white !important;
+  }
+
+  @media (min-width: 768px) {
+    .ui-brand-logo-img svg {
+      height: 3.5rem;
+      max-width: 180px;
+    }
   }
 
   .ui-brand-logo-label {
@@ -210,11 +231,11 @@
   }
 
   .ui-navbar-transparent {
-    @apply bg-[#4E1380]/45 backdrop-blur-md border border-white/10 text-white shadow-lg;
+    @apply bg-[#4E1380]/80 backdrop-blur-md border border-white/10 text-white shadow-lg;
   }
 
   .ui-navbar-scrolled {
-    @apply bg-[#4E1380]/45 backdrop-blur-2xl border border-white/10 text-white shadow-2xl;
+    @apply bg-[#4E1380]/90 backdrop-blur-2xl border border-white/10 text-white shadow-2xl;
   }
 
   .ui-navbar-contrast {

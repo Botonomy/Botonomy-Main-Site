@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { captureUTMSession, initScrollDepthTracking } from './utils/analytics';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -14,6 +15,12 @@ import RagSystems from './pages/RagSystems';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
+  useEffect(() => {
+    captureUTMSession();
+    const cleanup = initScrollDepthTracking();
+    return cleanup;
+  }, []);
+
   return (
     <Router>
       <div className="layout-main-wrapper">

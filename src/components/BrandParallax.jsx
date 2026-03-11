@@ -1,5 +1,13 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+
+// Eagerly load all SVGs as raw strings so they can be rendered inline
+const svgModules = import.meta.glob('../assets/logos/*.svg', { query: '?raw', import: 'default', eager: true });
+
+function getSvgRaw(url) {
+    const filename = url.split('/').pop();
+    return svgModules[`../assets/logos/${filename}`] || null;
+}
 
 export default function BrandParallax({ title, subtitle, bgImage, logos }) {
     const containerRef = useRef(null);
@@ -79,11 +87,23 @@ export default function BrandParallax({ title, subtitle, bgImage, logos }) {
 
                 {/* Avant Garde Logo Grid */}
                 <div className="ui-brand-logo-grid">
-                    {logos.map((logo, index) => (
-                        <div key={index} className="brand-logo ui-brand-logo-item">
-                            <img src={logo.url} alt={logo.name} className="ui-brand-logo-img" />
-                        </div>
-                    ))}
+                    {logos.map((logo, index) => {
+                        const rawSvg = getSvgRaw(logo.url);
+                        return (
+                            <div key={index} className="brand-logo ui-brand-logo-item">
+                                {rawSvg ? (
+                                    <div
+                                        className="ui-brand-logo-img"
+                                        dangerouslySetInnerHTML={{ __html: rawSvg }}
+                                        aria-label={logo.name}
+                                        role="img"
+                                    />
+                                ) : (
+                                    <img src={logo.url} alt={logo.name} className="ui-brand-logo-img" />
+                                )}
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </section>
