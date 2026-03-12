@@ -11,6 +11,7 @@ import GenerativeContent from './pages/GenerativeContent';
 import CrmAutomation from './pages/CrmAutomation';
 import SocialMedia from './pages/SocialMedia';
 import RagSystems from './pages/RagSystems';
+import Contact from './pages/Contact';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,6 +42,8 @@ export default function App() {
           <Route path="/systems/crm-automation" element={<CrmAutomation />} />
           <Route path="/systems/social-media" element={<SocialMedia />} />
           <Route path="/systems/rag-systems" element={<RagSystems />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/contact/" element={<Contact />} />
         </Routes>
 
         <Footer />
