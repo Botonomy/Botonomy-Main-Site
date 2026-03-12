@@ -101,7 +101,7 @@ export default function Contact() {
                                         <label className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#121212]/40">Name *</label>
                                         <input
                                             type="text" name="name" required value={form.name} onChange={handleChange}
-                                            placeholder="Martin Kelly"
+                                            placeholder="Your name"
                                             className="w-full px-4 py-3 bg-[#F7F5F0] border border-black/8 rounded-xl font-sans text-sm text-[#121212] placeholder:text-[#121212]/30 focus:outline-none focus:border-[#4E1380]/40 transition-colors"
                                         />
                                     </div>

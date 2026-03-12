@@ -12,6 +12,8 @@ import CrmAutomation from './pages/CrmAutomation';
 import SocialMedia from './pages/SocialMedia';
 import RagSystems from './pages/RagSystems';
 import Contact from './pages/Contact';
+import NewsletterPopup from './components/NewsletterPopup';
+import NewsletterBanner from './components/NewsletterBanner';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,7 +48,9 @@ export default function App() {
           <Route path="/contact/" element={<Contact />} />
         </Routes>
 
+        <NewsletterBanner />
         <Footer />
+        <NewsletterPopup />
       </div>
     </Router>
   );
