@@ -87,7 +87,7 @@ export default function NewsletterPopup() {
                                 Automation insights that<br />
                                 <span className="bg-gradient-to-r from-[#FF4D4D] to-[#FF8A00] bg-clip-text text-transparent">actually move the needle.</span>
                             </h3>
-                            <p className="font-sans text-white/45 text-sm leading-relaxed">No fluff. No filler. Just what's working in AI-driven marketing this week.</p>
+                            <p className="font-sans text-white/45 text-sm leading-relaxed">Sharp AI marketing moves. Delivered every week.</p>
                         </div>
 
                         <form onSubmit={handleSubmit} className="flex flex-col gap-3">

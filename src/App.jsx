@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { captureUTMSession, initScrollDepthTracking } from './utils/analytics';
@@ -46,6 +46,7 @@ export default function App() {
           <Route path="/systems/rag-systems" element={<RagSystems />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/contact/" element={<Contact />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
 
         <NewsletterBanner />

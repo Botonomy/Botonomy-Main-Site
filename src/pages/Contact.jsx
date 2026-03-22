@@ -152,12 +152,10 @@ export default function Contact() {
                                 <button
                                     type="submit"
                                     disabled={status === 'sending'}
-                                    className="interactive-button-accent w-full text-center"
+                                    className="w-full py-4 rounded-[2.5rem] font-sans text-sm font-bold text-white transition-all duration-300 disabled:opacity-60 hover:scale-[1.02]"
+                                    style={{ background: 'linear-gradient(to right, #FF4D4D, #FF8A00)' }}
                                 >
-                                    <span className="interactive-button-gradient-fill"></span>
-                                    <span className="relative z-10 flex items-center justify-center gap-2">
-                                        {status === 'sending' ? 'Sending…' : 'Send message →'}
-                                    </span>
+                                    {status === 'sending' ? 'Sending…' : 'Send message →'}
                                 </button>
                             </form>
                         )}

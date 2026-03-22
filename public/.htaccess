@@ -1,0 +1,59 @@
+Options -MultiViews
+RewriteEngine On
+
+# -------------------------------------------------------
+# 301 Redirects — Legacy WordPress URL patterns
+# -------------------------------------------------------
+
+# RSS/Atom feed URLs (e.g. /category/business/feed/)
+RewriteRule ^(.+/)?feed/?$ /blog/ [R=301,L]
+
+# WordPress archive pages
+RewriteRule ^category(/.*)?$ /blog/ [R=301,L]
+RewriteRule ^tag(/.*)?$ /blog/ [R=301,L]
+RewriteRule ^author(/.*)?$ /blog/ [R=301,L]
+RewriteRule ^page(/.*)?$ /blog/ [R=301,L]
+
+# WordPress system paths
+RewriteRule ^wp-(admin|login|content|includes|json|cron|trackback|comments)(/?.*)?$ / [R=301,L]
+
+# xmlrpc and sitemap artifacts
+RewriteRule ^xmlrpc\.php$ / [R=301,L]
+
+# -------------------------------------------------------
+# 301 Redirects — Individual old post slugs (WP sitemap-matched)
+# Generated: 2026-03-22
+# -------------------------------------------------------
+
+RewriteRule ^5-ways-ai-can-enhance-business-efficiency/?$ /blog/ [R=301,L]
+RewriteRule ^agentic-workflows/?$ https://www.botonomy.ai/blog/automation/agentic-workflows/ [R=301,L]
+RewriteRule ^ai-agent/?$ https://www.botonomy.ai/blog/ai-news/ai-agent/ [R=301,L]
+RewriteRule ^ai-marketing-agent/?$ https://www.botonomy.ai/blog/automation/ai-marketing-agent/ [R=301,L]
+RewriteRule ^ai-news/?$ /blog/ai-news/ [R=301,L]
+RewriteRule ^automation/?$ /blog/automation/ [R=301,L]
+RewriteRule ^featured/?$ https://www.botonomy.ai/blog/tag/featured/ [R=301,L]
+RewriteRule ^martin/?$ https://www.botonomy.ai/blog/author/martin/ [R=301,L]
+RewriteRule ^the-future-of-profitability-through-smarter-automation/?$ /blog/ [R=301,L]
+RewriteRule ^the-link-between-automation-and-business-innovation/?$ /blog/ [R=301,L]
+
+# -------------------------------------------------------
+# WordPress: remove /category/ from blog category URLs
+# e.g. /blog/category/ai-news/ → /blog/ai-news/
+# -------------------------------------------------------
+RewriteRule ^blog/category/(.+)$ /blog/$1 [R=301,L]
+
+# -------------------------------------------------------
+# WordPress blog pass-through — must come before SPA fallback
+# All /blog/* requests go straight to WordPress; do not rewrite.
+# -------------------------------------------------------
+RewriteCond %{REQUEST_URI} ^/blog [NC]
+RewriteRule ^ - [L]
+
+# -------------------------------------------------------
+# React SPA Fallback
+# Serve existing static files/dirs directly;
+# everything else gets index.html so React Router handles it.
+# -------------------------------------------------------
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ /index.html [QSA,L]

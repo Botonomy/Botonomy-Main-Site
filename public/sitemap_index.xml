@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Botonomy React site pages -->
+  <sitemap>
+    <loc>https://www.botonomy.ai/sitemap.xml</loc>
+    <lastmod>2026-03-22</lastmod>
+  </sitemap>
+  <!-- WordPress blog — core wp-sitemap (posts, pages, taxonomies, users) -->
+  <sitemap>
+    <loc>https://www.botonomy.ai/blog/wp-sitemap.xml</loc>
+  </sitemap>
+</sitemapindex>

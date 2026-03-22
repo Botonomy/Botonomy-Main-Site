@@ -5,6 +5,16 @@ To revert: `git checkout deploy/YYYY-MM-DD-vN` then rebuild and rsync.
 
 ---
 
+## deploy/2026-03-12-v1 — 2026-03-12
+**Newsletter popup + banner across main site + blog**
+- `src/components/NewsletterPopup.jsx` — modal fires 4s after load, once per session (sessionStorage), never again after subscribe (localStorage). Fields: first name, last name, email. Success: "See you next week!" green state, auto-closes after 2.8s.
+- `src/components/NewsletterBanner.jsx` — above-footer newsletter section on all pages. Already-subscribed state detected from localStorage.
+- `src/App.jsx` — wired both components globally
+- Contact page: name placeholder fixed from "Martin Kelly" → "Your name"
+- WordPress blog theme: same popup + banner + inline article capture (below hero on single posts). All POST to `https://webhooks.botonomy.ai/webhook/newsletter-subscribe`
+
+---
+
 ## deploy/2026-03-11-v2 — 2026-03-11
 **Contact page + Footer overhaul**
 - Added `/contact` route and `src/pages/Contact.jsx`
