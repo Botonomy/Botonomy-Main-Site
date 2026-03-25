@@ -1,5 +1,5 @@
 import React, { useEffect, lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { captureUTMSession, initScrollDepthTracking } from './utils/analytics';
 import Navbar from './components/Navbar';
@@ -31,7 +31,6 @@ export default function App() {
 
   return (
     <HelmetProvider>
-    <Router>
       <div className="layout-main-wrapper">
         {/* Global CSS Noise Overlay */}
         <svg className="noise-overlay pointer-events-none fixed inset-0 z-50 h-full w-full opacity-5" xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +60,6 @@ export default function App() {
         <Footer />
         <NewsletterPopup />
       </div>
-    </Router>
     </HelmetProvider>
   );
 }

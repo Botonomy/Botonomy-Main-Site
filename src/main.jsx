@@ -1,5 +1,6 @@
 import React, { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import { hydrateRoot, createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
@@ -14,10 +15,22 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-createRoot(document.getElementById('root')).render(
+const rootEl = document.getElementById('root')
+const app = (
   <StrictMode>
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
-  </StrictMode>,
+    <BrowserRouter>
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
+    </BrowserRouter>
+  </StrictMode>
 )
+
+if (rootEl.innerHTML.trim()) {
+  // SSG pre-rendered HTML present — hydrate without re-rendering
+  // React 18 keeps server HTML visible while lazy chunks load (no flash)
+  hydrateRoot(rootEl, app)
+} else {
+  // Dev mode or fallback — full client render
+  createRoot(rootEl).render(app)
+}

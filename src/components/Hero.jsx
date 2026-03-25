@@ -33,7 +33,7 @@ export default function Hero() {
                         src="/images/hero-bg.webp"
                         alt="Botonomy AI-powered marketing automation — autonomous digital marketing agency"
                         className="w-full h-full object-cover opacity-50 mix-blend-screen"
-                        fetchpriority="high"
+                        fetchPriority="high"
                         decoding="async"
                     />
                 </picture>

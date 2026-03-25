@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const STORAGE_KEY = 'botonomy_newsletter_done';
 
 export default function NewsletterBanner() {
-    const already = typeof localStorage !== 'undefined' && localStorage.getItem(STORAGE_KEY);
+    const already = typeof window !== 'undefined' && localStorage.getItem(STORAGE_KEY);
     const [email, setEmail]   = useState('');
     const [status, setStatus] = useState(already ? 'subscribed' : 'idle');
 
