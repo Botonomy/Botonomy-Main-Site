@@ -44,6 +44,9 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
 
+    <!-- Pre-seed Aria widget container so deferred script mutates existing node (prevents CLS) -->
+    <div id="botonomy-panel" style="position:fixed;bottom:0;right:0;z-index:9999"></div>
+
     <!-- Aria — Botonomy Chat Widget: deferred so it never blocks page render -->
     <script
       defer

@@ -1,24 +1,12 @@
-import React, { useLayoutEffect, useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React, { useEffect, useRef } from 'react';
 import { trackCTA, trackBookingIntent, useSectionTracking } from '../utils/analytics';
 
 export default function Hero() {
     const containerRef = useRef(null);
 
-    useLayoutEffect(() => {
-        let ctx = gsap.context(() => {
-            gsap.from(".anim-fade-up-hero", {
-                y: 40,
-                opacity: 0,
-                duration: 1.2,
-                stagger: 0.15,
-                ease: "power3.out",
-                delay: 0.2
-            });
-        }, containerRef);
-
+    useEffect(() => {
         const cleanup = useSectionTracking(containerRef, 'hero');
-        return () => { ctx.revert(); cleanup?.(); };
+        return () => { cleanup?.(); };
     }, []);
 
     const handleBookCall = () => {
@@ -59,18 +47,18 @@ export default function Hero() {
                         <h1 className="anim-fade-up-hero text-hero-headline !text-5xl md:!text-7xl lg:!text-[6rem]">
                             Growth beyond
                         </h1>
-                        <h2 className="anim-fade-up-hero text-hero-drama !text-7xl md:!text-9xl lg:!text-[10rem]">
+                        <h2 className="anim-fade-up-hero-2 text-hero-drama !text-7xl md:!text-9xl lg:!text-[10rem]">
                             limits.
                         </h2>
                     </div>
 
-                    <p className="anim-fade-up-hero text-hero-description !text-lg md:!text-xl !max-w-xl">
+                    <p className="anim-fade-up-hero-3 text-hero-description !text-lg md:!text-xl !max-w-xl">
                         Botonomy.ai builds revenue-generating automation systems that turn fragmented marketing efforts into scalable growth infrastructure.
                     </p>
 
                     <button
                         onClick={handleBookCall}
-                        className="anim-fade-up-hero interactive-button-accent mt-10 !px-12 !py-5"
+                        className="anim-fade-up-hero-4 interactive-button-accent mt-10 !px-12 !py-5"
                     >
                         <span className="interactive-button-static-gradient"></span>
                         <span className="relative z-10 flex items-center gap-2 text-lg">
