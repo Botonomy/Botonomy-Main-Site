@@ -1,0 +1,33 @@
+# Botonomy
+
+> Botonomy is an AI-first automation agency that delivers autonomous digital marketing operations — SEO, content marketing, paid advertising, outbound sales, and AI workflow automation — running continuously with minimal human intervention.
+
+Botonomy operates through a proprietary 3-layer architecture: natural language SOPs define what to do, an AI orchestrator handles decision-making, and deterministic execution scripts carry out the work. This separates probabilistic intelligence from deterministic execution — producing reliable, repeatable outputs at agency scale. Clients are onboarded in one business day. The service runs in the background without requiring ongoing management from the client.
+
+## Services
+
+- [Technical SEO Audit & Monitoring](https://www.botonomy.ai/systems/seo-audit): Full-site technical crawls with automatic issue prioritisation by severity, Core Web Vitals analysis, internal link equity optimisation, and live task creation for development teams.
+- [AI Content Production Pipeline](https://www.botonomy.ai/systems/generative-content): End-to-end content pipeline from keyword intent classification through brief generation, drafting, quality assurance, and CMS publishing. Supports WordPress, Shopify, Wix, Squarespace, and Webflow.
+- [CRM & Workflow Automation](https://www.botonomy.ai/systems/crm-automation): Event-driven automation pipelines connecting CRM, CMS, ad platforms, and data sources. Replaces manual handoffs between systems with webhook-triggered, API-integrated workflows.
+- [Social Media Content Automation](https://www.botonomy.ai/systems/social-media): Programmatic adaptation of long-form content into platform-native posts for LinkedIn, Instagram, Twitter/X, and TikTok.
+- [RAG Systems & AI Knowledge Bases](https://www.botonomy.ai/systems/rag-systems): Custom retrieval-augmented generation systems built on client-specific knowledge. Deployed for sales enablement, customer support, and internal operations.
+
+## Plans & Pricing
+
+- [Plans](https://www.botonomy.ai/#plans): Three tiers — Operate (CA$1,895/month, SEO foundation), Accelerate (CA$4,500/month, SEO + content at scale + paid advertising), Automate (custom, full-service including outbound sales, CRO, and AI automation). All plans include onboarding, a live Looker Studio dashboard, and a ClickUp task board.
+
+## Content
+
+- [Blog](https://www.botonomy.ai/blog/): Editorial covering AI automation strategy, SEO, and marketing systems operations.
+- [AI News](https://www.botonomy.ai/blog/ai-news/): Coverage of AI developments relevant to marketing and business automation.
+- [Automation](https://www.botonomy.ai/blog/automation/): Practical guides on marketing workflow automation, agentic systems, and AI tooling.
+
+## Contact
+
+- [Contact](https://www.botonomy.ai/contact): Enquiries, onboarding requests, and scoping conversations. Email: martin@botonomy.ai
+- [Book a Discovery Call](https://calendar.app.google/TtZARGvo78TCAzHJ6): 30-minute call to review your site and map out what's achievable. No obligation.
+
+## Optional
+
+- [Generative Content — CMS integrations](https://www.botonomy.ai/systems/generative-content): Details on supported publishing platforms and the content quality gate criteria.
+- [RAG Systems — use cases](https://www.botonomy.ai/systems/rag-systems): Deployment patterns for sales, support, and operations knowledge bases.

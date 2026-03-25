@@ -1,29 +1,55 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MDK7CHHT');</script>
-    <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Botonomy AI</title>
+
+    <!-- Early connection hints for third-party origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://chat.botonomy.ai">
+    <link rel="dns-prefetch" href="https://calendar.app.google">
+
+    <!-- LCP preload: hero background image — tells browser to fetch this at highest priority -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/hero-bg.webp"
+      imagesrcset="/images/hero-bg-mobile.webp 1024w, /images/hero-bg.webp 2560w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    >
+
+    <!-- Google Fonts — display=swap already prevents FOIT; preconnect above speeds fetch -->
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Instrument+Serif:ital@0;1&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+
+    <!-- Google Tag Manager — moved to end of head, async load prevents blocking -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-MDK7CHHT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    </script>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDK7CHHT"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Aria — Botonomy Chat Widget: deferred so it never blocks page render -->
+    <script
+      defer
+      src="https://chat.botonomy.ai/widget/widget.js"
+      data-api="https://chat.botonomy.ai"
+      data-booking="https://calendar.google.com/calendar/appointments/schedules/AcZssZ12E_40EBR48_kufD_E8zPIm3nGN7qNp01-M2NA1s5NdbhbxO-NWqEjkTAcv9oHPV2WOlx7jDUA"
+    ></script>
   </body>
 </html>

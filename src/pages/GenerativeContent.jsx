@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import gsap from 'gsap';
 import { AgentOrchestrator, InferenceStream, WorkflowScheduler } from '../components/SystemCards';
 import BrandParallax from '../components/BrandParallax';
@@ -13,7 +14,7 @@ const genLogos = [
 export default function GenerativeContent() {
     const pageRef = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         window.scrollTo(0, 0);
         let ctx = gsap.context(() => {
             gsap.from(".anim-fade-up", { y: 40, opacity: 0, duration: 1.2, stagger: 0.15, ease: "power3.out", delay: 0.2 });
@@ -27,9 +28,18 @@ export default function GenerativeContent() {
 
     return (
         <div ref={pageRef} className="pt-24 min-h-screen">
+            <Helmet>
+                <title>AI Content Production Pipeline | Botonomy</title>
+                <meta name="description" content="Research-backed, SEO-optimised content from brief to CMS draft — automated end-to-end. Quality-gated before it ever reaches your site." />
+                <meta property="og:title" content="AI Content Production Pipeline | Botonomy" />
+                <meta property="og:description" content="Research-backed, SEO-optimised content from brief to CMS draft — automated end-to-end. Quality-gated before it ever reaches your site." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://www.botonomy.ai/systems/generative-content" />
+                <link rel="canonical" href="https://www.botonomy.ai/systems/generative-content" />
+            </Helmet>
             <section className="section-hero">
                 <div className="absolute inset-0 z-0">
-                    <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=2564&auto=format&fit=crop" alt="Generative structures" className="w-full h-full object-cover opacity-40 mix-blend-screen saturate-150 relative top-10" />
+                    <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=2564&auto=format&fit=crop" alt="AI content generation pipeline — automated article production" className="w-full h-full object-cover opacity-40 mix-blend-screen saturate-150 relative top-10" />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent"></div>
                 </div>
                 <div className="relative z-10 layout-content-width layout-page-padding flex items-center justify-between">

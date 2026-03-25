@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const NeuralNetSim = () => {
     const container = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         let ctx = gsap.context(() => {
             gsap.to(".ring-1", { rotation: 360, transformOrigin: "center", duration: 15, repeat: -1, ease: "none" });
             gsap.to(".ring-2", { rotation: -360, transformOrigin: "center", duration: 25, repeat: -1, ease: "none" });
@@ -54,7 +54,7 @@ const NeuralNetSim = () => {
 const DataParserSim = () => {
     const container = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         let ctx = gsap.context(() => {
             const tl = gsap.timeline({ repeat: -1 });
             tl.to(".laser-line", { y: 280, duration: 2, ease: "power1.inOut" })
@@ -87,7 +87,7 @@ const DataParserSim = () => {
 const SystemMonitorSim = () => {
     const container = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         let ctx = gsap.context(() => {
             gsap.to(".ekg-path", {
                 strokeDashoffset: 0,
@@ -135,7 +135,7 @@ const SystemMonitorSim = () => {
 export default function Architecture() {
     const containerRef = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         let ctx = gsap.context(() => {
             const cards = gsap.utils.toArray('.arch-card');
 

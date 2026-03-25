@@ -1,11 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { trackCTA, trackBookingIntent, useSectionTracking } from '../utils/analytics';
 
 export default function Hero() {
     const containerRef = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         let ctx = gsap.context(() => {
             gsap.from(".anim-fade-up-hero", {
                 y: 40,
@@ -31,11 +31,24 @@ export default function Hero() {
         <section ref={containerRef} className="relative w-full h-[100dvh] flex items-end pb-32 layout-page-padding overflow-hidden bg-primary" id="hero">
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
-                <img
-                    src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop"
-                    alt="Generative organic tech"
-                    className="w-full h-full object-cover opacity-50 mix-blend-screen"
-                />
+                <picture>
+                    <source
+                        media="(max-width: 768px)"
+                        srcSet="/images/hero-bg-mobile.webp"
+                        type="image/webp"
+                    />
+                    <source
+                        srcSet="/images/hero-bg.webp"
+                        type="image/webp"
+                    />
+                    <img
+                        src="/images/hero-bg.webp"
+                        alt="Botonomy AI-powered marketing automation — autonomous digital marketing agency"
+                        className="w-full h-full object-cover opacity-50 mix-blend-screen"
+                        fetchpriority="high"
+                        decoding="async"
+                    />
+                </picture>
                 <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-transparent md:w-3/4"></div>
             </div>

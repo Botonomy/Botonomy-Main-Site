@@ -7,8 +7,6 @@ export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [systemsDropdownOpen, setSystemsDropdownOpen] = useState(false);
-    const [articlesDropdownOpen, setArticlesDropdownOpen] = useState(false);
-    const [mobileArticlesOpen, setMobileArticlesOpen] = useState(false);
     const location = useLocation();
     const isHome = location.pathname === '/';
 
@@ -23,11 +21,6 @@ export default function Navbar() {
         setSystemsDropdownOpen(true);
     };
 
-    const handleArticlesDropdownOpen = () => {
-        if (!articlesDropdownOpen) track('nav_dropdown_open', { dropdown: 'articles' });
-        setArticlesDropdownOpen(true);
-    };
-
     const handleBookCall = () => {
         trackNavClick('book_call', 'navbar_cta');
         trackBookingIntent('navbar');
@@ -39,11 +32,6 @@ export default function Navbar() {
         { name: "CRM Automation",      path: "/systems/crm-automation" },
         { name: "Social Content",      path: "/systems/social-media" },
         { name: "RAG Systems",         path: "/systems/rag-systems" },
-    ];
-
-    const articleSections = [
-        { name: "AI News",     path: "/blog/ai-news/" },
-        { name: "Automation",  path: "/blog/automation/" },
     ];
 
     return (
@@ -83,45 +71,12 @@ export default function Navbar() {
                     </div>
                 </div>
 
-                <Link to={isHome ? "#pricing" : "/#pricing"}
-                    onClick={() => trackNavClick('pricing', 'main')}
-                    className="hover:-translate-y-[1px] transition-all">Plans</Link>
-                {/* Articles Mega Menu */}
-                <div
-                    className="relative"
-                    onMouseEnter={handleArticlesDropdownOpen}
-                    onMouseLeave={() => setArticlesDropdownOpen(false)}
-                >
-                    <button className="flex items-center gap-1 hover:-translate-y-[1px] transition-all py-2">
-                        Articles <ChevronDown size={14} className={`transition-transform duration-300 ${articlesDropdownOpen ? 'rotate-180' : ''}`} />
-                    </button>
-
-                    <div className={`absolute top-full right-0 mt-2 w-56 p-2 rounded-2xl bg-[#4E1380]/90 text-white border border-white/10 backdrop-blur-xl shadow-2xl transition-all duration-300 origin-top ${articlesDropdownOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'}`}>
-                        <div className="flex flex-col gap-1">
-                            {articleSections.map((section) => (
-                                <a
-                                    key={section.name}
-                                    href={section.path}
-                                    onClick={() => trackNavClick(section.path, 'articles_section')}
-                                    className="px-4 py-3 rounded-xl transition-colors flex items-center justify-between group hover:bg-white/10 text-white/80 hover:text-white"
-                                >
-                                    <span>{section.name}</span>
-                                    <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all font-mono text-xs text-white/60">→</span>
-                                </a>
-                            ))}
-                        </div>
-                        <div className="border-t border-white/10 mt-2 pt-2">
-                            <a
-                                href="/blog/"
-                                onClick={() => trackNavClick('/blog', 'articles_all')}
-                                className="px-4 py-2 rounded-xl flex items-center justify-between group hover:bg-white/10 transition-colors text-sm text-white/50 hover:text-white"
-                            >
-                                <span>View all articles</span>
-                                <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all font-mono text-xs">→</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <a href={isHome ? "#plans" : "/#plans"}
+                    onClick={() => trackNavClick('plans', 'main')}
+                    className="hover:-translate-y-[1px] transition-all">Plans</a>
+                <a href="/blog/"
+                    onClick={() => trackNavClick('/blog', 'main')}
+                    className="hover:-translate-y-[1px] transition-all">Blog</a>
                 <a href="https://www.botonomy.ai/contact/"
                     onClick={() => trackNavClick('contact', 'main')}
                     className="hover:-translate-y-[1px] transition-all">Contact</a>
@@ -161,38 +116,12 @@ export default function Navbar() {
                         ))}
                     </div>
 
-                    <Link to={isHome ? "#pricing" : "/#pricing"}
-                        onClick={() => { setMobileMenuOpen(false); trackNavClick('pricing', 'mobile'); }}
-                        className="px-4 py-2 rounded-xl transition-colors hover:bg-white/10">Plans</Link>
-                    {/* Articles section */}
-                    <button
-                        onClick={() => setMobileArticlesOpen(!mobileArticlesOpen)}
-                        className="flex items-center justify-between w-full px-4 py-2 rounded-xl transition-colors hover:bg-white/10"
-                    >
-                        <span>Articles</span>
-                        <ChevronDown size={14} className={`transition-transform duration-300 ${mobileArticlesOpen ? 'rotate-180' : ''}`} />
-                    </button>
-                    {mobileArticlesOpen && (
-                        <div className="flex flex-col gap-2 pl-4 pr-2 border-l border-white/10 ml-4 mb-2">
-                            {articleSections.map((section) => (
-                                <a
-                                    key={section.name}
-                                    href={section.path}
-                                    onClick={() => { setMobileMenuOpen(false); trackNavClick(section.path, 'mobile_articles_section'); }}
-                                    className="py-2 opacity-80 hover:opacity-100 transition-opacity"
-                                >
-                                    {section.name}
-                                </a>
-                            ))}
-                            <a
-                                href="/blog/"
-                                onClick={() => { setMobileMenuOpen(false); trackNavClick('/blog', 'mobile_articles_all'); }}
-                                className="py-2 text-sm text-white/50 hover:text-white transition-colors"
-                            >
-                                View all articles →
-                            </a>
-                        </div>
-                    )}
+                    <a href={isHome ? "#plans" : "/#plans"}
+                        onClick={() => { setMobileMenuOpen(false); trackNavClick('plans', 'mobile'); }}
+                        className="px-4 py-2 rounded-xl transition-colors hover:bg-white/10">Plans</a>
+                    <a href="/blog/"
+                        onClick={() => { setMobileMenuOpen(false); trackNavClick('/blog', 'mobile'); }}
+                        className="px-4 py-2 rounded-xl transition-colors hover:bg-white/10 opacity-80 hover:opacity-100">Blog</a>
 
                     <a href="https://www.botonomy.ai/contact/"
                         onClick={() => { setMobileMenuOpen(false); trackNavClick('contact', 'mobile'); }}

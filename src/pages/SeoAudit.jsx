@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import gsap from 'gsap';
 import { AgentOrchestrator, InferenceStream, WorkflowScheduler } from '../components/SystemCards';
 import BrandParallax from '../components/BrandParallax';
@@ -13,7 +14,7 @@ const seoLogos = [
 export default function SeoAudit() {
     const pageRef = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         window.scrollTo(0, 0);
         let ctx = gsap.context(() => {
             gsap.from(".anim-fade-up", { y: 40, opacity: 0, duration: 1.2, stagger: 0.15, ease: "power3.out", delay: 0.2 });
@@ -27,10 +28,19 @@ export default function SeoAudit() {
 
     return (
         <div ref={pageRef} className="pt-24 min-h-screen">
+            <Helmet>
+                <title>AI-Powered SEO Audit &amp; Monitoring | Botonomy</title>
+                <meta name="description" content="Full-site technical SEO audits with automatic issue prioritisation, Core Web Vitals analysis, and live ClickUp task creation. Powered by Botonomy." />
+                <meta property="og:title" content="AI-Powered SEO Audit & Monitoring | Botonomy" />
+                <meta property="og:description" content="Full-site technical SEO audits with automatic issue prioritisation, Core Web Vitals analysis, and live ClickUp task creation. Powered by Botonomy." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://www.botonomy.ai/systems/seo-audit" />
+                <link rel="canonical" href="https://www.botonomy.ai/systems/seo-audit" />
+            </Helmet>
             {/* HERO */}
             <section className="section-hero">
                 <div className="absolute inset-0 z-0">
-                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2564&auto=format&fit=crop" alt="Data streams" className="w-full h-full object-cover opacity-40 mix-blend-screen" />
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2564&auto=format&fit=crop" alt="SEO audit data analysis — technical site health visualised" className="w-full h-full object-cover opacity-40 mix-blend-screen" />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent"></div>
                 </div>
                 <div className="relative z-10 layout-content-width layout-page-padding">

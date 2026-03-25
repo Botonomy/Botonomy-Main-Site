@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Botonomy React site pages -->
+
+  <!-- Botonomy main site (React) -->
   <sitemap>
     <loc>https://www.botonomy.ai/sitemap.xml</loc>
-    <lastmod>2026-03-22</lastmod>
+    <lastmod>2026-03-23</lastmod>
   </sitemap>
-  <!-- WordPress blog — core wp-sitemap (posts, pages, taxonomies, users) -->
+
+  <!-- WordPress blog — posts -->
   <sitemap>
-    <loc>https://www.botonomy.ai/blog/wp-sitemap.xml</loc>
+    <loc>https://www.botonomy.ai/blog/wp-sitemap-posts-post-1.xml</loc>
   </sitemap>
+
+  <!-- WordPress blog — pages -->
+  <sitemap>
+    <loc>https://www.botonomy.ai/blog/wp-sitemap-posts-page-1.xml</loc>
+  </sitemap>
+
+  <!-- WordPress blog — categories -->
+  <sitemap>
+    <loc>https://www.botonomy.ai/blog/wp-sitemap-taxonomies-category-1.xml</loc>
+  </sitemap>
+
 </sitemapindex>

@@ -2,26 +2,135 @@ Options -MultiViews
 RewriteEngine On
 
 # -------------------------------------------------------
+# Pre-compressed asset delivery (Brotli → Gzip → raw)
+#
+# Build step generates .br and .gz alongside every asset.
+# Rules below serve the compressed variant transparently:
+# same public URL, correct Content-Type, Content-Encoding.
+# RewriteRules MUST be outside <IfModule> blocks.
+# -------------------------------------------------------
+
+# --- Brotli: serve .br file when browser advertises support ---
+RewriteCond %{HTTP:Accept-Encoding} br
+RewriteCond %{REQUEST_FILENAME}\.br -f
+RewriteRule ^ %{REQUEST_URI}.br [L]
+
+# --- Gzip fallback: serve .gz file when brotli not available ---
+RewriteCond %{HTTP:Accept-Encoding} gzip
+RewriteCond %{REQUEST_FILENAME}\.gz -f
+RewriteRule ^ %{REQUEST_URI}.gz [L]
+
+# -------------------------------------------------------
+# Headers for pre-compressed files
+# -------------------------------------------------------
+<IfModule mod_headers.c>
+
+  # Brotli-compressed JS
+  <FilesMatch "\.js\.br$">
+    Header set Content-Encoding "br"
+    Header set Content-Type "text/javascript; charset=utf-8"
+    Header append Vary "Accept-Encoding"
+  </FilesMatch>
+
+  # Brotli-compressed CSS
+  <FilesMatch "\.css\.br$">
+    Header set Content-Encoding "br"
+    Header set Content-Type "text/css; charset=utf-8"
+    Header append Vary "Accept-Encoding"
+  </FilesMatch>
+
+  # Brotli-compressed SVG
+  <FilesMatch "\.svg\.br$">
+    Header set Content-Encoding "br"
+    Header set Content-Type "image/svg+xml"
+    Header append Vary "Accept-Encoding"
+  </FilesMatch>
+
+  # Gzip-compressed JS
+  <FilesMatch "\.js\.gz$">
+    Header set Content-Encoding "gzip"
+    Header set Content-Type "text/javascript; charset=utf-8"
+    Header append Vary "Accept-Encoding"
+  </FilesMatch>
+
+  # Gzip-compressed CSS
+  <FilesMatch "\.css\.gz$">
+    Header set Content-Encoding "gzip"
+    Header set Content-Type "text/css; charset=utf-8"
+    Header append Vary "Accept-Encoding"
+  </FilesMatch>
+
+  # Gzip-compressed SVG
+  <FilesMatch "\.svg\.gz$">
+    Header set Content-Encoding "gzip"
+    Header set Content-Type "image/svg+xml"
+    Header append Vary "Accept-Encoding"
+  </FilesMatch>
+
+</IfModule>
+
+# -------------------------------------------------------
+# Dynamic compression fallback (HTML, robots.txt, etc.)
+# LiteSpeed compresses these automatically server-side;
+# mod_deflate activates on standard Apache environments.
+# -------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json text/xml application/xml image/svg+xml text/plain
+</IfModule>
+
+# -------------------------------------------------------
+# Cache Control
+# -------------------------------------------------------
+<IfModule mod_headers.c>
+
+  # Vite-hashed JS and CSS: 1 year, immutable
+  # Applies to both raw and pre-compressed variants (.gz / .br)
+  <FilesMatch "\.(js|css)(\.br|\.gz)?$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Images and SVGs: 30 days
+  <FilesMatch "\.(ico|png|jpg|jpeg|gif|webp|avif|svg)(\.br|\.gz)?$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  # Fonts: 1 year, immutable
+  <FilesMatch "\.(woff|woff2|ttf|otf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Crawl and discovery files: 1 day
+  <FilesMatch "^(robots\.txt|sitemap.*\.xml|llms\.txt)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+
+  # HTML: always revalidate — entry point references hashed assets;
+  # a stale copy after deploy means users run old JS/CSS
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  # Security headers
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+</IfModule>
+
+# -------------------------------------------------------
 # 301 Redirects — Legacy WordPress URL patterns
 # -------------------------------------------------------
 
-# RSS/Atom feed URLs (e.g. /category/business/feed/)
 RewriteRule ^(.+/)?feed/?$ /blog/ [R=301,L]
-
-# WordPress archive pages
 RewriteRule ^category(/.*)?$ /blog/ [R=301,L]
 RewriteRule ^tag(/.*)?$ /blog/ [R=301,L]
 RewriteRule ^author(/.*)?$ /blog/ [R=301,L]
 RewriteRule ^page(/.*)?$ /blog/ [R=301,L]
-
-# WordPress system paths
 RewriteRule ^wp-(admin|login|content|includes|json|cron|trackback|comments)(/?.*)?$ / [R=301,L]
-
-# xmlrpc and sitemap artifacts
 RewriteRule ^xmlrpc\.php$ / [R=301,L]
 
 # -------------------------------------------------------
-# 301 Redirects — Individual old post slugs (WP sitemap-matched)
+# 301 Redirects — Individual old post slugs
 # Generated: 2026-03-22
 # -------------------------------------------------------
 
@@ -36,23 +145,17 @@ RewriteRule ^martin/?$ https://www.botonomy.ai/blog/author/martin/ [R=301,L]
 RewriteRule ^the-future-of-profitability-through-smarter-automation/?$ /blog/ [R=301,L]
 RewriteRule ^the-link-between-automation-and-business-innovation/?$ /blog/ [R=301,L]
 
-# -------------------------------------------------------
 # WordPress: remove /category/ from blog category URLs
-# e.g. /blog/category/ai-news/ → /blog/ai-news/
-# -------------------------------------------------------
 RewriteRule ^blog/category/(.+)$ /blog/$1 [R=301,L]
 
 # -------------------------------------------------------
 # WordPress blog pass-through — must come before SPA fallback
-# All /blog/* requests go straight to WordPress; do not rewrite.
 # -------------------------------------------------------
 RewriteCond %{REQUEST_URI} ^/blog [NC]
 RewriteRule ^ - [L]
 
 # -------------------------------------------------------
 # React SPA Fallback
-# Serve existing static files/dirs directly;
-# everything else gets index.html so React Router handles it.
 # -------------------------------------------------------
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

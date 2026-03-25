@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
 // Eagerly load all SVGs as raw strings so they can be rendered inline
@@ -14,7 +14,7 @@ export default function BrandParallax({ title, subtitle, bgImage, logos }) {
     const bgRef = useRef(null);
     const contentRef = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         let ctx = gsap.context(() => {
             // Background Parallax
             gsap.to(bgRef.current, {
@@ -68,6 +68,8 @@ export default function BrandParallax({ title, subtitle, bgImage, logos }) {
                         src={bgImage}
                         alt="Abstract integration background"
                         className="ui-brand-parallax-img"
+                        loading="lazy"
+                        decoding="async"
                     />
                 </div>
                 <div className="ui-brand-parallax-overlay"></div>

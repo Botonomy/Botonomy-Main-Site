@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
 export default function Manifesto() {
@@ -7,7 +7,7 @@ export default function Manifesto() {
     const text2Ref = useRef(null);
     const bgRef = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         let ctx = gsap.context(() => {
             // Parallax Background
             gsap.to(bgRef.current, {
@@ -55,8 +55,10 @@ export default function Manifesto() {
                 <div ref={bgRef} className="absolute inset-[-20%] w-[140%] h-[140%]">
                     <img
                         src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2564&auto=format&fit=crop"
-                        alt="Abstract generative art texture"
+                        alt="Botonomy automation systems — continuous marketing execution without human bottlenecks"
                         className="w-full h-full object-cover opacity-30 mix-blend-screen"
+                        loading="lazy"
+                        decoding="async"
                     />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-b from-primary via-primary/80 to-primary"></div>

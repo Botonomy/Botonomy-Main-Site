@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import gsap from 'gsap';
 import { AgentOrchestrator, InferenceStream, WorkflowScheduler } from '../components/SystemCards';
 import BrandParallax from '../components/BrandParallax';
@@ -14,7 +15,7 @@ const socialLogos = [
 export default function SocialMedia() {
     const pageRef = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         window.scrollTo(0, 0);
         let ctx = gsap.context(() => {
             gsap.from(".anim-fade-up", { y: 40, opacity: 0, duration: 1.2, stagger: 0.15, ease: "power3.out", delay: 0.2 });
@@ -28,9 +29,18 @@ export default function SocialMedia() {
 
     return (
         <div ref={pageRef} className="pt-24 min-h-screen">
+            <Helmet>
+                <title>Social Media Content Automation | Botonomy</title>
+                <meta name="description" content="AI-generated social content adapted from your articles — LinkedIn, Instagram, Twitter/X, and TikTok. Publish at scale without the overhead." />
+                <meta property="og:title" content="Social Media Content Automation | Botonomy" />
+                <meta property="og:description" content="AI-generated social content adapted from your articles — LinkedIn, Instagram, Twitter/X, and TikTok. Publish at scale without the overhead." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://www.botonomy.ai/systems/social-media" />
+                <link rel="canonical" href="https://www.botonomy.ai/systems/social-media" />
+            </Helmet>
             <section className="section-hero">
                 <div className="absolute inset-0 z-0">
-                    <img src="https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?q=80&w=2564&auto=format&fit=crop" alt="Social networks abstract" className="w-full h-full object-cover opacity-40 mix-blend-screen saturate-150 relative top-10" />
+                    <img src="https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?q=80&w=2564&auto=format&fit=crop" alt="Social media content automation across LinkedIn, Instagram, TikTok and X" className="w-full h-full object-cover opacity-40 mix-blend-screen saturate-150 relative top-10" />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent"></div>
                 </div>
                 <div className="relative z-10 layout-content-width layout-page-padding">

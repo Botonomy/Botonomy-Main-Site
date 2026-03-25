@@ -1,0 +1,43 @@
+# robots.txt — botonomy.ai
+# Last updated: 2026-03-23
+
+# -------------------------------------------------------
+# General crawl rules
+# -------------------------------------------------------
+User-agent: *
+
+# WordPress admin and authentication — never index
+Disallow: /blog/wp-admin/
+Disallow: /blog/wp-login.php
+Disallow: /blog/xmlrpc.php
+Disallow: /blog/wp-cron.php
+Disallow: /blog/wp-activate.php
+
+# WordPress REST API — not for public indexation
+Disallow: /blog/wp-json/
+
+# WordPress search results — duplicate content
+Disallow: /blog/?s=
+
+# WordPress draft previews and private query strings
+Disallow: /blog/?p=
+Disallow: /blog/?preview=
+Disallow: /blog/?page_id=
+
+# WordPress feeds — low indexation value
+Disallow: /blog/feed/
+Disallow: /blog/comments/feed/
+Disallow: /blog/*/feed/
+
+# WordPress cache and build artefacts
+Disallow: /blog/wp-content/cache/
+Disallow: /blog/wp-content/upgrade/
+Disallow: /blog/wp-content/backup-db/
+
+# Source maps — development artefacts, not for indexation
+Disallow: /*.map$
+
+# -------------------------------------------------------
+# Sitemap
+# -------------------------------------------------------
+Sitemap: https://www.botonomy.ai/sitemap_index.xml

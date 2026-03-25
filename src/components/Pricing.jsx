@@ -38,8 +38,8 @@ export default function Pricing() {
         <section ref={containerRef} className="section-hook !py-32" id="pricing">
             <div className="layout-content-width layout-page-padding">
                 <div className="mb-20 text-center max-w-2xl mx-auto">
-                    <h2 className="text-features-title">
-                        Architectural <span id="plans" className="font-drama italic text-accent-start">Plans.</span>
+                    <h2 id="plans" className="text-features-title">
+                        Architectural <span className="font-drama italic text-accent-start">Plans.</span>
                     </h2>
                     <p className="text-body-standard">
                         Select the growth infrastructure that scales with your operational demands.

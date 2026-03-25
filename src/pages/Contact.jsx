@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useLayoutEffect, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import gsap from 'gsap';
 import { trackNavClick } from '../utils/analytics';
 
@@ -18,7 +19,7 @@ export default function Contact() {
     const [form, setForm] = useState({ name: '', email: '', company: '', service: '', message: '' });
     const [status, setStatus] = useState('idle'); // idle | sending | success | error
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         window.scrollTo(0, 0);
         const ctx = gsap.context(() => {
             gsap.from('.anim-fade-up', { y: 40, opacity: 0, duration: 1.1, stagger: 0.12, ease: 'power3.out', delay: 0.15 });
@@ -53,6 +54,15 @@ export default function Contact() {
 
     return (
         <div ref={pageRef} className="min-h-screen">
+            <Helmet>
+                <title>Contact Botonomy — Book a Discovery Call</title>
+                <meta name="description" content="Ready to automate your marketing? Book a free 30-minute discovery call with Martin or send a message. We'll review your site and map out what's possible." />
+                <meta property="og:title" content="Contact Botonomy — Book a Discovery Call" />
+                <meta property="og:description" content="Ready to automate your marketing? Book a free 30-minute discovery call with Martin or send a message. We'll review your site and map out what's possible." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://www.botonomy.ai/contact" />
+                <link rel="canonical" href="https://www.botonomy.ai/contact" />
+            </Helmet>
 
             {/* ── HERO ── */}
             <section className="bg-[#121212] rounded-b-[3rem] pt-36 pb-20 px-6 md:px-16">
